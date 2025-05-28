@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaintenanceBot - AI Assistant for Industrial Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2C3E50, #3498DB);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+
+        .output-section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            min-height: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        select, textarea, input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, textarea:focus, input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .diagnosis-result {
+            background: #f8f9fa;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .diagnosis-result.warning {
+            border-left-color: #ffc107;
+            background: #fff8e1;
+        }
+
+        .diagnosis-result.critical {
+            border-left-color: #dc3545;
+            background: #ffebee;
+        }
+
+        .step {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .step-number {
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .reasoning-chain {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .reasoning-step {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        .arrow {
+            margin: 0 10px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .severity-high { color: #dc3545; font-weight: bold; }
+        .severity-medium { color: #ffc107; font-weight: bold; }
+        .severity-low { color: #28a745; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 MaintenanceBot AI</h1>
+            <p>Autonomous Virtual Assistant for Industrial Machine Maintenance</p>
+        </div>
+
+        <div class="main-content">
+            <div class="input-section">
+                <h2>🔍 Machine Diagnostics Input</h2>
+                
+                <div class="form-group">
+                    <label for="machineType">Machine Type:</label>
+                    <select id="machineType">
+                        <option value="">Select Machine Type</option>
+                        <option value="conveyor">Conveyor Belt System</option>
+                        <option value="pump">Hydraulic Pump</option>
+                        <option value="motor">Electric Motor</option>
+                        <option value="compressor">Air Compressor</option>
+                        <option value="hvac">HVAC System</option>
+                        <option value="generator">Generator</option>
+                        <option value="robot">Industrial Robot</option>
+                        <option value="press">Hydraulic Press</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="symptoms">Observed Symptoms:</label>
+                    <textarea id="symptoms" placeholder="Describe what you've observed: unusual sounds, vibrations, performance issues, error codes, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="environment">Operating Environment:</label>
+                    <select id="environment">
+                        <option value="normal">Normal Conditions</option>
+                        <option value="high-temp">High Temperature</option>
+                        <option value="high-humidity">High Humidity</option>
+                        <option value="dusty">Dusty Environment</option>
+                        <option value="corrosive">Corrosive Environment</option>
+                        <option value="outdoor">Outdoor Installation</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="urgency">Urgency Level:</label>
+                    <select id="urgency">
+                        <option value="low">Low - Preventive Maintenance</option>
+                        <option value="medium">Medium - Performance Degradation</option>
+                        <option value="high">High - Critical Operation Impact</option>
+                        <option value="emergency">Emergency - Safety Risk</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo">Additional Information:</label>
+                    <textarea id="additionalInfo" placeholder="Recent maintenance history, modifications, operating hours, etc."></textarea>
+                </div>
+
+                <button class="btn" onclick="diagnose()">🔍 Start AI Diagnosis</button>
+            </div>
+
+            <div class="output-section">
+                <h2>🤖 AI Analysis Results</h2>
+                <div id="output">
+                    <p style="color: #666; text-align: center; padding: 50px 20px;">
+                        Enter machine details and symptoms to get AI-powered diagnostic analysis and maintenance recommendations.
+                    </p>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>AI Agent is analyzing symptoms and generating diagnosis...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Knowledge base for machine maintenance diagnostics
+        const maintenanceKnowledge = {
+            conveyor: {
+                symptoms: {
+                    'belt slipping': { 
+                        causes: ['worn belt', 'incorrect tension', 'pulley wear'], 
+                        severity: 'medium',
+                        actions: ['Adjust belt tension', 'Inspect pulleys for wear', 'Replace belt if necessary']
+                    },
+                    'unusual noise': { 
+                        causes: ['bearing failure', 'misalignment', 'foreign object'], 
+                        severity: 'high',
+                        actions: ['Stop operation immediately', 'Inspect bearings', 'Check alignment', 'Remove foreign objects']
+                    },
+                    'belt tracking issues': { 
+                        causes: ['misalignment', 'uneven loading', 'worn idlers'], 
+                        severity: 'medium',
+                        actions: ['Adjust belt tracking', 'Check idler condition', 'Verify load distribution']
+                    }
+                }
+            },
+            pump: {
+                symptoms: {
+                    'reduced flow': { 
+                        causes: ['clogged impeller', 'cavitation', 'worn seals'], 
+                        severity: 'medium',
+                        actions: ['Clean impeller', 'Check suction conditions', 'Inspect seals']
+                    },
+                    'vibration': { 
+                        causes: ['imbalance', 'cavitation', 'loose mounting'], 
+                        severity: 'high',
+                        actions: ['Balance impeller', 'Check NPSH', 'Tighten mounting bolts']
+                    },
+                    'overheating': { 
+                        causes: ['low flow', 'bearing failure', 'blocked cooling'], 
+                        severity: 'high',
+                        actions: ['Check flow rate', 'Inspect bearings', 'Clear cooling passages']
+                    }
+                }
+            },
+            motor: {
+                symptoms: {
+                    'overheating': { 
+                        causes: ['overload', 'blocked ventilation', 'bearing failure'], 
+                        severity: 'high',
+                        actions: ['Check load current', 'Clean ventilation', 'Inspect bearings']
+                    },
+                    'vibration': { 
+                        causes: ['imbalance', 'misalignment', 'bearing wear'], 
+                        severity: 'medium',
+                        actions: ['Balance rotor', 'Check alignment', 'Replace bearings']
+                    },
+                    'starting problems': { 
+                        causes: ['faulty starter', 'low voltage', 'mechanical binding'], 
+                        severity: 'high',
+                        actions: ['Test starter contacts', 'Check voltage', 'Inspect coupling']
+                    }
+                }
+            }
+        };
+
+        function findBestMatch(symptoms, machineType) {
+            if (!maintenanceKnowledge[machineType]) {
+                return null;
+            }
+
+            const knownSymptoms = maintenanceKnowledge[machineType].symptoms;
+            let bestMatch = null;
+            let highestScore = 0;
+
+            for (const [symptom, data] of Object.entries(knownSymptoms)) {
+                const score = calculateSimilarity(symptoms.toLowerCase(), symptom);
+                if (score > highestScore && score > 0.3) {
+                    highestScore = score;
+                    bestMatch = { symptom, ...data, score };
+                }
+            }
+
+            return bestMatch;
+        }
+
+        function calculateSimilarity(text1, text2) {
+            const words1 = text1.split(/\s+/);
+            const words2 = text2.split(/\s+/);
+            
+            let matches = 0;
+            for (const word1 of words1) {
+                for (const word2 of words2) {
+                    if (word1.includes(word2) || word2.includes(word1)) {
+                        matches++;
+                        break;
+                    }
+                }
+            }
+            
+            return matches / Math.max(words1.length, words2.length);
+        }
+
+        function generateReasoningChain(symptoms, machineType, match) {
+            const steps = [];
+            
+            steps.push("Analyzing input symptoms and machine type");
+            steps.push(`Identified machine type: ${machineType.toUpperCase()}`);
+            
+            if (match) {
+                steps.push(`Pattern matched: "${match.symptom}" (confidence: ${(match.score * 100).toFixed(1)}%)`);
+                steps.push("Evaluating probable root causes");
+                steps.push("Determining severity and priority");
+                steps.push("Generating corrective action plan");
+            } else {
+                steps.push("No exact pattern match found");
+                steps.push("Applying general diagnostic principles");
+                steps.push("Recommending systematic troubleshooting");
+            }
+            
+            return steps;
+        }
+
+        function generateGenericRecommendations(symptoms, machineType, urgency) {
+            const recommendations = [];
+            
+            // Safety first
+            if (urgency === 'emergency' || urgency === 'high') {
+                recommendations.push({
+                    type: 'safety',
+                    action: 'Immediate Safety Assessment',
+                    details: 'Stop operation if there is any risk to personnel or equipment'
+                });
+            }
+            
+            // Visual inspection
+            recommendations.push({
+                type: 'inspection',
+                action: 'Visual Inspection',
+                details: 'Check for obvious signs of wear, damage, leaks, or loose components'
+            });
+            
+            // Basic checks based on machine type
+            if (machineType.includes('motor') || machineType.includes('pump')) {
+                recommendations.push({
+                    type: 'electrical',
+                    action: 'Electrical System Check',
+                    details: 'Verify voltage, current, and connection integrity'
+                });
+            }
+            
+            if (machineType.includes('conveyor') || machineType.includes('robot')) {
+                recommendations.push({
+                    type: 'mechanical',
+                    action: 'Mechanical System Check',
+                    details: 'Inspect alignment, lubrication, and wear components'
+                });
+            }
+            
+            // Documentation
+            recommendations.push({
+                type: 'documentation',
+                action: 'Document Findings',
+                details: 'Record all observations and measurements for trend analysis'
+            });
+            
+            return recommendations;
+        }
+
+        async function diagnose() {
+            const machineType = document.getElementById('machineType').value;
+            const symptoms = document.getElementById('symptoms').value;
+            const environment = document.getElementById('environment').value;
+            const urgency = document.getElementById('urgency').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
+            
+            if (!machineType || !symptoms) {
+                alert('Please select a machine type and describe the symptoms.');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('output').innerHTML = '';
+            
+            // Simulate AI processing time
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Hide loading
+            document.getElementById('loading').style.display = 'none';
+            
+            // Find best symptom match
+            const match = findBestMatch(symptoms, machineType);
+            
+            // Generate reasoning chain
+            const reasoningSteps = generateReasoningChain(symptoms, machineType, match);
+            
+            // Generate output
+            let output = `
+                <div class="reasoning-chain">
+                    <h3>🧠 AI Reasoning Process</h3>
+            `;
+            
+            reasoningSteps.forEach((step, index) => {
+                output += `
+                    <div class="reasoning-step">
+                        <span class="step-number">${index + 1}</span>
+                        <span>${step}</span>
+                        ${index < reasoningSteps.length - 1 ? '<span class="arrow">→</span>' : ''}
+                    </div>
+                `;
+            });
+            
+            output += `</div>`;
+            
+            // Root cause analysis
+            if (match) {
+                const severityClass = match.severity === 'high' ? 'critical' : 
+                                   match.severity === 'medium' ? 'warning' : '';
+                
+                output += `
+                    <div class="diagnosis-result ${severityClass}">
+                        <h3>🎯 Root Cause Analysis</h3>
+                        <p><strong>Primary Symptom Pattern:</strong> ${match.symptom}</p>
+                        <p><strong>Confidence Level:</strong> ${(match.score * 100).toFixed(1)}%</p>
+                        <p><strong>Severity:</strong> <span class="severity-${match.severity}">${match.severity.toUpperCase()}</span></p>
+                        <p><strong>Probable Causes:</strong></p>
+                        <ul>
+                            ${match.causes.map(cause => `<li>${cause}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                
+                // Recommended actions
+                output += `
+                    <div class="diagnosis-result">
+                        <h3>🔧 Recommended Troubleshooting Steps</h3>
+                `;
+                
+                match.actions.forEach((action, index) => {
+                    output += `
+                        <div class="step">
+                            <span class="step-number">${index + 1}</span>
+                            <strong>${action}</strong>
+                        </div>
+                    `;
+                });
+                
+                output += `</div>`;
+            } else {
+                // Generic recommendations
+                const recommendations = generateGenericRecommendations(symptoms, machineType, urgency);
+                
+                output += `
+                    <div class="diagnosis-result warning">
+                        <h3>⚠️ General Diagnostic Approach</h3>
+                        <p>No specific pattern match found. Applying systematic troubleshooting approach:</p>
+                    </div>
+                `;
+                
+                recommendations.forEach((rec, index) => {
+                    output += `
+                        <div class="step">
+                            <span class="step-number">${index + 1}</span>
+                            <strong>${rec.action}:</strong> ${rec.details}
+                        </div>
+                    `;
+                });
+            }
+            
+            // Environmental considerations
+            if (environment !== 'normal') {
+                output += `
+                    <div class="diagnosis-result">
+                        <h3>🌡️ Environmental Factors</h3>
+                        <p><strong>Operating Environment:</strong> ${environment.replace('-', ' ').toUpperCase()}</p>
+                        <p>Consider environmental impact on component wear and failure modes.</p>
+                    </div>
+                `;
+            }
+            
+            // Priority and next steps
+            output += `
+                <div class="diagnosis-result">
+                    <h3>📋 Next Steps & Monitoring</h3>
+                    <p><strong>Priority Level:</strong> <span class="severity-${urgency === 'emergency' ? 'high' : urgency}">${urgency.toUpperCase()}</span></p>
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <strong>Schedule follow-up inspection after corrective actions</strong>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <strong>Monitor key performance indicators</strong>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <strong>Update maintenance records and predictive models</strong>
+                    </div>
+                </div>
+            `;
+            
+            // Component-specific insights
+            output += `
+                <div class="diagnosis-result">
+                    <h3>🔍 Component-Specific Insights</h3>
+                    <p><strong>Machine Type:</strong> ${machineType.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</p>
+                    <p><strong>Key Components to Monitor:</strong></p>
+                    <ul>
+                        ${getKeyComponents(machineType).map(comp => `<li>${comp}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            document.getElementById('output').innerHTML = output;
+        }
+        
+        function getKeyComponents(machineType) {
+            const components = {
+                conveyor: ['Drive motor', 'Belt/chain', 'Bearings', 'Idlers/rollers', 'Tensioning system'],
+                pump: ['Impeller', 'Seals', 'Bearings', 'Coupling', 'Suction/discharge valves'],
+                motor: ['Windings', 'Bearings', 'Brushes/commutator', 'Cooling system', 'Starter contacts'],
+                compressor: ['Valves', 'Pistons/rotors', 'Bearings', 'Cooling system', 'Pressure relief'],
+                hvac: ['Filters', 'Coils', 'Fans', 'Dampers', 'Controls'],
+                generator: ['Windings', 'Bearings', 'Cooling system', 'Voltage regulator', 'Fuel system'],
+                robot: ['Joints/actuators', 'Sensors', 'Control system', 'Power transmission', 'Safety systems'],
+                press: ['Hydraulic cylinders', 'Seals', 'Valves', 'Pressure sensors', 'Safety systems']
+            };
+            
+            return components[machineType] || ['Primary drive system', 'Control systems', 'Safety devices', 'Wear components'];
+        }
+
+        // Auto-resize textareas
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                textarea.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = this.scrollHeight + 'px';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
