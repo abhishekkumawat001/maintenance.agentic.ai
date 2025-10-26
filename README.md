@@ -6,7 +6,6 @@ Maintenance.Agentic.AI is a comprehensive AI-powered virtual assistant designed 
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## 🌟 Features
 
@@ -195,8 +194,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/abhishekkumawat001/maintenance.agentic.ai/issues)
-- **Documentation**: [Wiki](https://github.com/abhishekkumawat001/maintenance.agentic.ai/wiki)
 - **Contact**: abhishekkumawat001@gmail.com
 
 ## 🙏 Acknowledgments
