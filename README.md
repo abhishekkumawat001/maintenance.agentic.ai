@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🔧 Maintenance.Agentic.AI
 
 **An Autonomous AI Agent for Industrial Maintenance Management**
@@ -409,7 +408,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/abhishekkumawat001/maintenance.agentic.ai/issues)
-- **Documentation**: [Wiki](https://github.com/abhishekkumawat001/maintenance.agentic.ai/wiki)
 - **Contact**: abhishekkumawat001@gmail.com
 
 ## 🙏 Acknowledgments
@@ -425,4 +423,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Made with ❤️ by Abhishek Kumawat**
 
 *Revolutionizing industrial maintenance through AI innovation*
->>>>>>> 8e7293c (update .gitignore file)
