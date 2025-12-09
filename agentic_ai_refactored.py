@@ -14,6 +14,7 @@ import google.generativeai as genai
 from google.generativeai import configure
 from google.generativeai.generative_models import GenerativeModel
 from dotenv import load_dotenv
+from typing import Any, Dict, List, Optional
 load_dotenv()
 
 class LLMConfig:
@@ -46,7 +47,7 @@ class FaultDiagnosis:
     description: str
     root_cause: str
     recommended_actions: List[str]
-    estimated_downtime: int  # in hours
+    estimated_downtime: int  
 
 class MaintenanceType(Enum):
     PREVENTIVE = "preventive"
