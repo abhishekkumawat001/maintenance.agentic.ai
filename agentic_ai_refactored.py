@@ -22,7 +22,7 @@ class LLMConfig:
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "your-gemini-api-key")
 
 gemini_key = os.getenv("GEMINI_API_KEY")
-print(gemini_key)
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
