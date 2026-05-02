@@ -1,0 +1,115 @@
+INDUSTRIAL SAFETY PROCEDURES
+==============================
+
+1. LOCKOUT/TAGOUT (LOTO) PROCEDURES
+-------------------------------------
+
+Purpose: Prevent unexpected energization of equipment during maintenance.
+
+LOTO Steps:
+1. NOTIFY all affected personnel of the planned lockout
+2. SHUT DOWN equipment using normal operating controls
+3. ISOLATE all energy sources:
+   - Electrical: Open breaker, remove fuses
+   - Mechanical: Block, chain, or pin moving parts
+   - Hydraulic/Pneumatic: Bleed stored energy, block cylinders
+   - Thermal: Allow cooldown or drain hot fluids
+   - Chemical: Close and blank valves, drain lines
+4. APPLY personal lock and tag at each isolation point
+5. VERIFY zero energy state:
+   - Try to start equipment (ensure it will not)
+   - Test with voltage tester for electrical isolation
+   - Check pressure gauges read zero
+   - Verify mechanical components cannot move
+6. PERFORM the maintenance work
+7. REMOVE locks and tags — only the person who applied them
+8. RESTORE energy sources and restart equipment
+9. NOTIFY all personnel that equipment is back in service
+
+Group LOTO: When multiple workers are involved, each person applies their own lock. A lockbox may be used for complex lockouts.
+
+2. PERSONAL PROTECTIVE EQUIPMENT (PPE)
+----------------------------------------
+
+Minimum PPE for industrial maintenance:
+- Hard hat (ANSI Z89.1)
+- Safety glasses with side shields (ANSI Z87.1)
+- Steel-toe or composite-toe boots (ASTM F2413)
+- Hearing protection in areas > 85 dB (earplugs or earmuffs)
+- Work gloves appropriate for the task
+
+Task-Specific PPE:
+- Chemical handling: Chemical splash goggles, face shield, chemical-resistant gloves, apron
+- Welding/cutting: Welding helmet (auto-darkening), leather gloves, flame-resistant clothing
+- Electrical work: Insulated gloves rated for voltage class, arc flash suit (category per NFPA 70E)
+- Confined space: Full body harness, gas detector, supplied air respirator if needed
+- Grinding: Face shield over safety glasses, leather gloves
+- Working at heights: Full body harness with shock-absorbing lanyard, hard hat with chin strap
+
+3. HOT WORK PERMIT PROCEDURES
+-------------------------------
+
+Hot Work includes: Welding, cutting, grinding, brazing, soldering, or any spark-producing activity.
+
+Requirements:
+1. Obtain Hot Work Permit signed by authorized personnel
+2. Inspect area within 35 feet (11 meters) radius for combustibles
+3. Remove or protect combustible materials (fire blankets, wet down)
+4. Ensure fire extinguisher is present and accessible
+5. Test atmosphere for flammable gases (LEL < 10%)
+6. Post fire watch during work and for minimum 60 minutes after
+7. Fire watch must have communication device and know alarm location
+
+4. CONFINED SPACE ENTRY
+-------------------------
+
+Confined spaces include: Tanks, vessels, pits, manholes, silos, hoppers.
+
+Requirements:
+1. Obtain Confined Space Entry Permit
+2. Atmospheric testing BEFORE entry:
+   - Oxygen: 19.5% - 23.5%
+   - LEL (flammable gas): < 10%
+   - Toxic gases (H2S, CO): Below PEL
+3. Continuous atmospheric monitoring during entry
+4. Attendant stationed outside at all times
+5. Rescue plan and equipment available
+6. Communication system between entrant and attendant
+7. Mechanical ventilation if atmosphere is not acceptable
+8. LOTO all energy sources to the confined space
+
+5. WORKING AT HEIGHTS
+-----------------------
+
+Fall protection required at heights > 6 feet (1.8 meters):
+- Full body harness with shock-absorbing lanyard or SRL
+- Anchor point rated for 5,000 lbs per worker
+- Inspect fall protection equipment before each use
+- Barricade area below elevated work
+- Use tool lanyards to prevent dropped objects
+- Scaffolding must be inspected by competent person
+- Ladder safety: 4:1 ratio, extend 3 feet above landing, secure at top
+
+6. EMERGENCY PROCEDURES
+-------------------------
+
+Fire:
+1. Activate fire alarm
+2. Call emergency number
+3. Evacuate area using nearest safe exit
+4. Fight fire ONLY if trained and fire is small
+5. Meet at designated assembly point
+
+Chemical Spill:
+1. Evacuate immediate area
+2. Notify supervisor and emergency response team
+3. Consult Safety Data Sheet (SDS) for cleanup procedure
+4. Don appropriate PPE before approaching spill
+5. Contain spill if safe to do so (absorbent materials, dikes)
+
+Medical Emergency:
+1. Call emergency number
+2. Do not move injured person unless in immediate danger
+3. Administer first aid if trained
+4. Keep injured person warm and comfortable
+5. Direct emergency responders to location

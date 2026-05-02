@@ -1,0 +1,75 @@
+EQUIPMENT TROUBLESHOOTING GUIDE
+================================
+
+1. PUMP TROUBLESHOOTING
+-------------------------
+
+SYMPTOM: Pump Won't Start
+Causes: Electrical supply failure, motor protection relay tripped, coupling failure, seized impeller.
+Steps: Check electrical supply, check relay, try to rotate shaft by hand (with LOTO), verify interlocks.
+Fix: Reset breaker after finding cause, replace coupling if sheared, free seized components.
+
+SYMPTOM: Pump Running But No Flow
+Causes: Suction valve closed, pump not primed, impeller worn/broken, wrong rotation direction.
+Steps: Verify valve positions, check suction pressure, verify rotation matches pump arrow, vent casing.
+Fix: Open suction valve, prime pump, correct rotation (swap 2 of 3 phases), replace impeller.
+
+SYMPTOM: Excessive Vibration
+Causes: Misalignment, unbalanced impeller, bearing wear, cavitation, loose foundation bolts, pipe strain.
+Diagnosis: Spectral analysis — 1x RPM = imbalance, 2x RPM = misalignment, high-freq = bearing defects.
+Fix: Laser align, balance impeller, replace bearings, verify NPSH available > NPSH required.
+
+SYMPTOM: Pump Overheating
+Causes: Deadheading, insufficient cooling, bearing failure, worn wear rings.
+Fix: Open discharge valve, restore cooling, replace bearings, install minimum flow bypass.
+
+2. MOTOR TROUBLESHOOTING
+--------------------------
+
+SYMPTOM: Motor Trips on Overload
+Causes: Mechanical overload, low voltage, phase imbalance, winding fault, wrong relay setting.
+Steps: Measure voltage (within ±10% nameplate), measure current (imbalance < 1%), megger test.
+Fix: Correct voltage, reduce load or upsize motor, repair winding fault.
+
+SYMPTOM: Excessive Motor Vibration
+Causes: Misalignment, unbalanced rotor, loose bolts, bearing defects, broken rotor bars, soft foot.
+Steps: Check spectrum, run motor uncoupled to isolate source, check mounting bolts.
+Fix: Laser alignment, dynamic balance, torque bolts, replace bearings.
+
+SYMPTOM: Motor Overheating
+Causes: Overload, blocked ventilation, voltage imbalance, ambient temperature too high.
+Fix: Reduce load, clean cooling fins, correct voltage balance, improve ventilation.
+
+3. COMPRESSOR TROUBLESHOOTING
+-------------------------------
+
+SYMPTOM: Won't Load
+Causes: Inlet valve stuck, unloader stuck, control issue, minimum pressure valve not opening.
+Fix: Free stuck valve, repair unloader, clear control faults, adjust pressure valve.
+
+SYMPTOM: High Discharge Temperature
+Causes: Fouled intercooler, worn valves, incorrect gas composition, oil degradation.
+Fix: Clean heat exchangers, replace valves, change oil and filter.
+
+SYMPTOM: Excessive Oil Carry-over
+Causes: Worn piston rings, oil level too high, separator element saturated.
+Fix: Replace rings, adjust oil level, replace separator element.
+
+4. HVAC TROUBLESHOOTING
+--------------------------
+
+SYMPTOM: Insufficient Cooling
+Causes: Low refrigerant, dirty condenser coils, compressor failure, dirty air filters.
+Fix: Repair leak and recharge, clean coils, replace compressor, replace filters.
+
+SYMPTOM: Water Leak
+Causes: Clogged condensate drain, frozen evaporator coil, damaged drain pan.
+Fix: Clear drain line, defrost coil, replace drain pan, level unit.
+
+5. GENERAL TROUBLESHOOTING METHOD
+-----------------------------------
+Step 1 OBSERVE: What is the symptom? When did it start? What changed recently?
+Step 2 ANALYZE: Review history, check parameters, run diagnostics, consult manuals.
+Step 3 PLAN: Identify root cause, gather resources, assess safety requirements.
+Step 4 EXECUTE: Follow procedures, document findings, test after repair.
+Step 5 FOLLOW UP: Monitor performance, update history, conduct RCA, update PM procedures.

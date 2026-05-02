@@ -1,10 +1,33 @@
+# Environment
 .env
-venv/
-.env
+
+# Python
 venv/
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+
+# Data (generated at runtime)
+data/chroma_db/
+data/maintenance.db
 *.db
 *.sqlite
+
+# Uploads (user files)
+uploads/
+visual_uploads/
+
+# IDE
 .vscode/
 .idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Model cache
+.cache/

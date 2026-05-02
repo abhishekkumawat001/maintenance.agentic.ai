@@ -1,0 +1,131 @@
+ELECTRIC MOTOR MAINTENANCE MANUAL
+==================================
+
+1. INTRODUCTION
+---------------
+Electric motors are the workhorses of industrial operations, converting electrical energy into mechanical energy. They account for approximately 70% of industrial electricity consumption. Proper maintenance extends motor life (typically 15-20 years), prevents unplanned downtime, and maintains energy efficiency.
+
+2. MOTOR TYPES AND APPLICATIONS
+---------------------------------
+- AC Induction Motors (Squirrel Cage): Most common, used for pumps, fans, compressors
+- AC Synchronous Motors: Used where precise speed control is required
+- DC Motors: Variable speed applications, older installations
+- Variable Frequency Drive (VFD) Motors: Modern speed control, energy savings
+
+3. ROUTINE INSPECTION SCHEDULE
+-------------------------------
+
+Daily:
+- Check motor running temperature (frame temperature should not exceed nameplate rating + 40°C ambient)
+- Listen for unusual sounds (grinding, humming, buzzing)
+- Check for unusual vibration
+- Verify motor amperage is within nameplate Full Load Amps (FLA)
+- Inspect for signs of overheating (discoloration, odor)
+
+Monthly:
+- Measure and record vibration levels (overall velocity: acceptable < 4.5 mm/s per ISO 10816)
+- Check bearing temperatures with infrared thermometer
+- Inspect motor cooling fins and ventilation openings for blockage
+- Verify all connections are tight (terminal box, grounding)
+- Check VFD parameters and fault logs if applicable
+
+Quarterly:
+- Perform insulation resistance test (megger test)
+  * Minimum acceptable: 1 MΩ per kV of rated voltage + 1 MΩ
+  * Example: 460V motor = minimum 1.46 MΩ (round to 2 MΩ)
+  * PI (Polarization Index) should be > 2.0
+- Full vibration spectrum analysis with trending
+- Thermographic survey of motor, connections, and cables
+- Check alignment with driven equipment
+
+Annual:
+- Comprehensive insulation testing (megger, PI, surge comparison)
+- Bearing lubrication or replacement
+- Clean motor interior (compressed air, max 30 PSI)
+- Check air gap uniformity (for larger motors)
+- Inspect brushes and commutator/slip rings (DC and wound rotor motors)
+- Verify motor grounding resistance
+- Update motor condition assessment record
+
+4. BEARING MAINTENANCE
+-----------------------
+
+Grease-Lubricated Bearings:
+- Re-grease interval depends on speed, size, and operating conditions
+- General rule: Relubrication interval (hours) = 14,000 - 70 × d (bearing bore in mm)
+- Use manufacturer-recommended grease type (do NOT mix grease types)
+- Remove relief plug before greasing to prevent over-pressurization
+- Add grease with motor running if safe to do so
+- Quantity: Volume (oz) = D × W / 10 (D=OD, W=width in inches)
+
+Oil-Lubricated Bearings:
+- Check oil level weekly
+- Oil change interval: 6-12 months or per oil analysis results
+- Use ISO VG 68 mineral oil for most applications (check manufacturer specs)
+- Monitor oil temperature (typically 40-60°C above ambient)
+- Perform oil analysis quarterly for large/critical motors
+
+Signs of Bearing Failure:
+- Increasing vibration levels, especially at bearing defect frequencies
+- Rising bearing temperature
+- Unusual noise (growling, whining, clicking)
+- Grease discoloration or hardening
+- Shaft play (axial or radial)
+
+5. INSULATION SYSTEM
+---------------------
+
+Insulation Classes and Temperature Limits:
+- Class A: 105°C maximum
+- Class B: 130°C maximum  
+- Class F: 155°C maximum (most common in modern motors)
+- Class H: 180°C maximum
+
+For every 10°C above rated temperature, insulation life is halved.
+
+Insulation Testing:
+- Megger Test: Apply DC voltage and measure insulation resistance
+  * Test voltage: 500V for motors up to 1kV, 1000V for motors 1-2.5kV
+  * Record ambient temperature and correct readings to 40°C
+- Polarization Index: Ratio of 10-minute to 1-minute megger reading
+  * PI > 4.0: Excellent
+  * PI 2.0-4.0: Good
+  * PI 1.0-2.0: Questionable — investigate
+  * PI < 1.0: Poor — motor should be removed from service
+- Surge Test: Detects turn-to-turn insulation weakness
+
+6. COMMON FAILURE MODES
+-------------------------
+
+Overheating:
+- Causes: Overload, voltage imbalance, blocked ventilation, high ambient temperature
+- Prevention: Monitor amperage, ensure proper ventilation, check voltage balance (< 1%)
+
+Bearing Failure:
+- Causes: Over/under lubrication, contamination, misalignment, shaft currents (VFD induced)
+- Prevention: Follow lubrication schedule, use shaft grounding rings for VFD applications
+
+Winding Failure:
+- Causes: Insulation degradation, moisture ingress, voltage spikes, thermal cycling
+- Prevention: Regular megger testing, proper motor enclosure, surge protection
+
+Shaft/Coupling Issues:
+- Causes: Misalignment, coupling wear, key/keyway damage
+- Prevention: Laser alignment after installation and periodically, coupling inspection
+
+7. ENERGY EFFICIENCY
+---------------------
+- Oversized motors operate at low efficiency — right-size replacements
+- Replace older standard motors with premium efficiency (IE3/IE4) models
+- Use VFDs for variable load applications (potential 20-50% energy savings)
+- Maintain power quality: voltage within ±10%, current balance within 1%
+- Clean motor regularly to maintain cooling efficiency
+
+8. SAFETY
+----------
+- LOTO procedures mandatory before any electrical or mechanical work
+- Verify zero energy state with voltage tester before touching terminals
+- Use insulated tools rated for the voltage class
+- Ground motor frame and conduit properly
+- Maintain safe clearances from rotating parts
+- Arc flash analysis required for work on motor control centers

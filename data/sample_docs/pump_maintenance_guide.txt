@@ -1,0 +1,120 @@
+CENTRIFUGAL PUMP MAINTENANCE GUIDE
+===================================
+
+1. OVERVIEW
+-----------
+Centrifugal pumps are the most common type of pump used in industrial applications. They work by converting rotational kinetic energy from a motor into hydrodynamic energy of fluid flow. Proper maintenance is critical to prevent catastrophic failures and ensure optimal performance.
+
+2. ROUTINE MAINTENANCE SCHEDULE
+--------------------------------
+
+Daily Checks:
+- Check suction and discharge pressure gauges
+- Monitor pump vibration levels (acceptable: < 4.5 mm/s)
+- Check bearing temperature (should not exceed 82°C / 180°F)
+- Listen for unusual noises (cavitation, bearing noise)
+- Verify proper seal operation (no excessive leakage)
+- Check motor amperage against nameplate rating
+
+Weekly Checks:
+- Inspect mechanical seal for leakage (max 1 drop per minute for packed glands)
+- Check alignment between pump and motor using dial indicators
+- Verify coupling condition and guard integrity
+- Inspect foundation bolts for tightness
+- Check lubrication levels in bearing housing
+
+Monthly Checks:
+- Perform vibration analysis (overall and spectral)
+- Check bearing oil condition or grease levels
+- Inspect suction strainer/filter condition
+- Verify instrument calibration (pressure, temperature, flow)
+- Record and trend all readings
+
+Quarterly Checks:
+- Full vibration spectrum analysis with trending
+- Oil analysis for bearing housings (check for metal particles, water contamination)
+- Thermographic inspection of motor, bearings, and couplings
+- Check impeller clearance (back pull-out design)
+- Inspect wear rings for excessive clearance
+
+Annual Overhaul:
+- Complete disassembly and inspection
+- Replace mechanical seal
+- Check impeller for erosion, corrosion, and cavitation damage
+- Measure and record wear ring clearances (replace if > 2x design clearance)
+- Re-align pump and motor
+- Replace bearings if required
+- Hydrostatic test casing if applicable
+
+3. COMMON FAILURE MODES AND TROUBLESHOOTING
+--------------------------------------------
+
+Problem: Excessive Vibration
+Causes:
+- Misalignment between pump and motor (most common cause)
+- Unbalanced impeller (erosion, debris buildup)
+- Bearing wear or failure
+- Cavitation (NPSH issue)
+- Loose foundation bolts
+- Pipe strain on pump casing
+Diagnosis: Perform spectral vibration analysis. 1x RPM indicates imbalance; 2x RPM indicates misalignment; high-frequency indicates bearing defects.
+Solution: Laser align pump and motor, balance impeller, replace bearings, verify NPSH available > NPSH required.
+
+Problem: Low Flow / Low Pressure
+Causes:
+- Impeller wear or damage
+- Worn wear rings (excessive internal recirculation)
+- Air entrainment in suction line
+- Partially closed discharge valve
+- Wrong impeller size or speed
+Diagnosis: Compare actual performance curve to design curve. Check suction pressure for adequate NPSH.
+Solution: Replace impeller or wear rings, check for air leaks in suction piping, verify valve positions.
+
+Problem: Mechanical Seal Failure
+Causes:
+- Running dry (no liquid at seal faces)
+- Excessive vibration or shaft deflection
+- Incorrect seal installation
+- Chemical attack on seal materials
+- Thermal shock
+Diagnosis: Check for leakage pattern, inspect seal faces for scoring or heat checking.
+Solution: Ensure proper seal flush plan, reduce vibration, verify seal material compatibility with process fluid.
+
+Problem: Bearing Failure
+Causes:
+- Over-greasing or under-greasing
+- Contaminated lubricant (water, dirt)
+- Misalignment causing excessive axial or radial loads
+- Incorrect bearing fit (too tight or too loose)
+Diagnosis: Vibration analysis showing bearing defect frequencies (BPFO, BPFI, BSF, FTF). Elevated bearing temperature.
+Solution: Follow manufacturer lubrication specifications, maintain proper alignment, replace bearings with correct fit.
+
+Problem: Cavitation
+Causes:
+- Insufficient NPSH available
+- Suction line restrictions (clogged strainer, partially closed valve)
+- Liquid temperature too high
+- Excessive suction lift
+Diagnosis: Characteristic crackling/gravel noise. Pitting damage on impeller inlet vanes. Fluctuating discharge pressure.
+Solution: Increase suction pressure, reduce suction losses, lower liquid temperature, install larger suction piping.
+
+4. SAFETY PROCEDURES
+---------------------
+- Always perform Lockout/Tagout (LOTO) before any maintenance work
+- Drain and flush pump before opening for toxic or hazardous fluids
+- Wear appropriate PPE: safety glasses, gloves, steel-toe boots
+- Verify zero energy state before removing guards or couplings
+- Follow confined space entry procedures if entering pump pits
+- Use proper lifting equipment for heavy components (impellers, casings)
+
+5. SPARE PARTS RECOMMENDATIONS
+-------------------------------
+Critical spares to keep on hand:
+- Complete mechanical seal assembly
+- Set of bearings (radial and thrust)
+- Impeller (spare or refurbished)
+- Wear ring set (casing and impeller)
+- Coupling element (elastomeric insert or disc pack)
+- Shaft sleeve
+- Gasket set (casing, bearing housing)
+- O-ring kit for seal chamber

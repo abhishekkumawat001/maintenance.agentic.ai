@@ -1,0 +1,154 @@
+PREVENTIVE MAINTENANCE CHECKLIST
+=================================
+
+This document provides standardized preventive maintenance (PM) checklists for common industrial equipment categories. Each checklist includes inspection frequency, specific tasks, acceptance criteria, and required tools.
+
+1. ROTATING EQUIPMENT (PUMPS, MOTORS, FANS, COMPRESSORS)
+---------------------------------------------------------
+
+DAILY CHECKLIST:
+□ Check operating temperature (bearing housings, motor frame)
+□ Monitor vibration levels (acceptable: < 4.5 mm/s velocity)
+□ Listen for abnormal noise (cavitation, bearing noise, rubbing)
+□ Verify proper lubrication (oil level, grease condition)
+□ Check for leaks (seals, gaskets, piping connections)
+□ Record operating parameters (pressure, flow, amperage)
+□ Inspect guards and safety devices are in place
+□ Verify cooling system operation (fans, water cooling)
+
+WEEKLY CHECKLIST:
+□ Check alignment indicators (if installed)
+□ Inspect coupling condition
+□ Verify foundation bolt tightness
+□ Check belt tension and condition (belt-driven equipment)
+□ Inspect filters and strainers
+□ Review trending data for anomalies
+
+MONTHLY CHECKLIST:
+□ Perform vibration measurements and trending
+□ Check bearing temperatures with IR thermometer
+□ Inspect mechanical seals for excessive leakage
+□ Clean cooling fins and ventilation openings
+□ Check electrical connections for tightness and corrosion
+□ Verify instrument calibration
+□ Update maintenance records
+
+QUARTERLY CHECKLIST:
+□ Full vibration spectrum analysis
+□ Oil sampling and analysis
+□ Thermographic inspection
+□ Insulation resistance test (motors)
+□ Check wear components (wear rings, impeller, liners)
+□ Performance test (compare to design conditions)
+□ Alignment verification
+
+ANNUAL CHECKLIST:
+□ Complete overhaul inspection
+□ Replace wear components as needed
+□ Re-align all rotating equipment
+□ Perform comprehensive electrical testing
+□ Update spare parts inventory
+□ Review maintenance history and adjust PM intervals
+
+2. HEAT EXCHANGERS
+-------------------
+
+MONTHLY:
+□ Check tube-side and shell-side pressure drops
+□ Monitor approach temperatures
+□ Inspect for external leaks
+□ Check relief valve operation
+□ Record operating parameters
+
+QUARTERLY:
+□ Compare heat transfer coefficient to baseline
+□ Check for tube fouling (increased pressure drop or reduced heat transfer)
+□ Inspect expansion joints and flexible connections
+□ Verify corrosion protection systems
+
+ANNUAL:
+□ Internal inspection (open and inspect tubes/shell)
+□ Tube thickness measurements (UT testing)
+□ Clean tubes (chemical cleaning or mechanical cleaning)
+□ Inspect gaskets and replace as needed
+□ Hydrostatic test after reassembly
+□ Update corrosion rate data
+
+3. VALVES AND ACTUATORS
+------------------------
+
+MONTHLY:
+□ Cycle control valves through full range
+□ Check actuator operation (response time, positioning accuracy)
+□ Inspect valve packing for leaks
+□ Verify instrument air supply pressure
+□ Check positioner calibration
+
+QUARTERLY:
+□ Stroke test safety relief valves
+□ Inspect valve body for erosion/corrosion
+□ Check actuator diaphragm or piston condition
+□ Verify emergency shutdown valve function
+□ Test partial stroke on critical isolation valves
+
+ANNUAL:
+□ Full internal inspection of critical valves
+□ Replace packing on leaking valves
+□ Calibrate all control valves
+□ Test and certify safety relief valves
+□ Actuator overhaul as needed
+
+4. PIPING AND PRESSURE VESSELS
+-------------------------------
+
+QUARTERLY:
+□ Visual inspection for corrosion, leaks, supports
+□ Check pipe support condition and hanger adjustments
+□ Inspect insulation for damage or moisture intrusion
+□ Verify expansion joint condition
+
+ANNUAL:
+□ Ultrasonic thickness measurements at designated test locations
+□ Calculate corrosion rates and remaining life
+□ Inspect vessel internals (trays, baffles, nozzles)
+□ Test relief devices
+□ Review inspection history and schedule repairs
+
+5. ELECTRICAL SYSTEMS
+----------------------
+
+MONTHLY:
+□ Thermographic scan of switchgear, MCCs, and distribution panels
+□ Check for unusual odors or sounds in electrical rooms
+□ Verify UPS battery condition and charge level
+□ Test emergency lighting
+
+QUARTERLY:
+□ Inspect and clean electrical connections
+□ Test ground fault protection systems
+□ Verify transfer switch operation (generator backup)
+□ Check power quality (voltage balance, harmonics)
+
+ANNUAL:
+□ Comprehensive insulation resistance testing
+□ Protective relay testing and calibration
+□ Transformer oil analysis and inspection
+□ Arc flash hazard assessment update
+□ Breaker testing and maintenance
+□ Grounding system integrity test
+
+6. GENERAL GUIDELINES
+----------------------
+
+Maintenance Prioritization:
+- Priority 1 (Emergency): Safety hazard or imminent failure — immediate action required
+- Priority 2 (Urgent): Equipment degraded but operational — schedule within 24-48 hours
+- Priority 3 (Planned): Routine maintenance — schedule within normal planning cycle
+- Priority 4 (Improvement): Optimization or upgrade — schedule based on resource availability
+
+Documentation Requirements:
+- Record all work performed with date, technician name, and findings
+- Note any deferred work items with justification
+- Update equipment condition assessment
+- Report any safety concerns immediately
+- Maintain photographic records of significant findings

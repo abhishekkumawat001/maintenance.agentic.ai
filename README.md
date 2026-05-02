@@ -1,226 +1,188 @@
 # 🔧 Maintenance.Agentic.AI
 
-**An Autonomous AI-Powered Industrial Maintenance Assistant**
+**An AI-Powered Industrial Maintenance Assistant with RAG & Contextual Memory**
 
-A comprehensive AI maintenance system powered by Google Gemini, designed for universal industrial equipment monitoring, fault diagnosis, and predictive maintenance planning.
+A production-grade maintenance chatbot powered by Google Gemini, ChromaDB vector search, and sentence-transformers. Features Retrieval-Augmented Generation (RAG) for grounded answers from maintenance documents, persistent contextual memory across conversations, and a modern Streamlit web interface.
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![Gemini](https://img.shields.io/badge/Gemini-1.5%20Flash-orange.svg)](https://ai.google.dev)
+[![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Store-red.svg)](https://www.trychroma.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Web%20UI-FF4B4B.svg)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
 ## 🌟 Key Features
 
+### 🧠 RAG Pipeline (Retrieval-Augmented Generation)
+- **ChromaDB Vector Store** — Semantic search over maintenance documents
+- **sentence-transformers** (`all-MiniLM-L6-v2`) — Local embeddings, no API calls
+- **Document Ingestion** — Upload PDFs, DOCX, TXT files; auto-chunked and embedded
+- **Source Citations** — Every answer shows which documents were referenced
+- **Hybrid Context** — Combines retrieved knowledge with Gemini's reasoning
+
+### 💬 Contextual Memory System
+- **Sliding Window History** — Remembers the last 20 messages in full detail
+- **Auto-Summarization** — Older messages compressed by Gemini into summaries
+- **Entity Memory** — Tracks facts about specific equipment across conversations
+- **Persistent Storage** — Conversations saved to SQLite, survive app restarts
+- **Cross-Session Recall** — Start new conversations with context from past sessions
+
 ### 🤖 AI-Powered Diagnostics
-- **Gemini 1.5 Flash Integration**: Advanced AI reasoning for maintenance analysis
-- **Real-time Fault Diagnosis**: Instant equipment troubleshooting
-- **Root Cause Analysis**: Deep investigation of equipment failures
-- **Confidence Scoring**: Reliability assessment for every diagnosis
+- **Gemini 1.5 Flash Integration** — Advanced reasoning for maintenance analysis
+- **Sensor Data Analysis** — Temperature, vibration, pressure, humidity, sound level
+- **Root Cause Analysis** — AI-driven fault diagnosis with confidence scoring
+- **Multimodal Vision** — Send equipment images directly to Gemini for analysis
 
-### 📊 Comprehensive Monitoring
-- **Sensor Data Analysis**: Temperature, vibration, pressure, humidity, sound level
-- **Anomaly Detection**: Automatic identification of abnormal operating conditions
-- **Visual Inspection**: Computer vision for equipment defect detection
-- **Predictive Analytics**: AI-driven failure prediction
-
-### 🏭 Universal Equipment Support
-- **Rotating Equipment**: Motors, pumps, compressors, turbines, fans
-- **Static Equipment**: Heat exchangers, vessels, piping systems
-- **Control Systems**: PLCs, sensors, valves, actuators
-- **HVAC Systems**: Chillers, boilers, air handlers, cooling towers
-- **Power Systems**: Generators, transformers, switchgear
-
-### 📈 Intelligent Planning
-- **Automated Scheduling**: AI-optimized maintenance calendars
-- **Resource Optimization**: Minimize downtime and costs
-- **Task Prioritization**: Risk-based maintenance planning
-- **Historical Analysis**: Learn from past maintenance data
-
-### 💬 Natural Language Interface
-- **Interactive Chat**: Ask questions in plain English
-- **Expert Guidance**: Get professional maintenance advice
-- **Safety Protocols**: Automated safety procedure generation
-- **Documentation**: Instant access to equipment knowledge
+### 🖥️ Modern Web Interface
+- **Streamlit Chat UI** — Native chat experience with streaming responses
+- **Dark Theme** — Premium glassmorphism design with purple/teal accents
+- **Multi-Page App** — Chat, Sensor Analysis, Equipment Manager, Document Manager
+- **Drag & Drop Upload** — Upload maintenance manuals directly from the sidebar
+- **Semantic Search Testing** — Test what the RAG retriever finds for any query
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ Architecture
 
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    Streamlit Web UI                           │
+│  💬 Chat  │  📊 Sensors  │  🔧 Equipment  │  📄 Documents   │
+└────────────────────────┬─────────────────────────────────────┘
+                         │
+┌────────────────────────▼─────────────────────────────────────┐
+│                   RAG Chain                                   │
+│  Query → Embed → Retrieve → Augment Prompt → Generate        │
+└──────┬───────────────┬──────────────────────┬────────────────┘
+       │               │                      │
+┌──────▼──────┐ ┌──────▼──────┐  ┌────────────▼───────────────┐
+│  ChromaDB   │ │ Conversation │  │      Google Gemini         │
+│ Vector Store│ │   Memory     │  │    1.5 Flash LLM           │
+│ (embeddings)│ │ (SQLite +    │  │  (reasoning + generation)  │
+│             │ │  summaries)  │  │                            │
+└─────────────┘ └──────────────┘  └────────────────────────────┘
+       │
+┌──────▼──────┐
+│  sentence-  │
+│ transformers│
+│ (local      │
+│  embeddings)│
+└─────────────┘
+```
 
-┌─────────────────────────────────────────────────────────────┐
-│ User Interface (CLI) │
-│ • Sensor Input • Chat • Equipment Management • Reports │
-└───────────────────────────┬─────────────────────────────────┘
-│
-┌───────────────────────────▼─────────────────────────────────┐
-│ Intelligent Maintenance Assistant │
-│ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ │
-│ │ Sensor │ │ Vision │ │ Diagnostic │ │
-│ │ Processor │ │ Processor │ │ Engine │ │
-│ └──────────────┘ └──────────────┘ └──────────────┘ │
-└───────────────────────────┬─────────────────────────────────┘
-│
-┌───────────────────────────▼─────────────────────────────────┐
-│ Google Gemini 1.5 Flash │
-│ Advanced AI Reasoning & Knowledge Base │
-└───────────────────────────┬─────────────────────────────────┘
-│
-┌───────────────────────────▼─────────────────────────────────┐
-│ Knowledge Base (SQLite Database) │
-│ • Equipment Registry • Maintenance History • Fault DB │
-└─────────────────────────────────────────────────────────────┘
-
-
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-
-- Python 3.8 or higher
-- Google Gemini API key ([Get one here](https://ai.google.dev))
+- Python 3.10+
+- Google Gemini API key ([Get one free](https://ai.google.dev))
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/abhishekkumawat001/maintenance.agentic.ai.git
-   cd maintenance.agentic.ai
-   ```
+```bash
+# Clone
+git clone https://github.com/abhishekkumawat001/maintenance.agentic.ai.git
+cd maintenance.agentic.ai
 
-python -m venv .venv
+# Virtual environment
+python -m venv venv
 
 # Windows
-.venv\Scripts\activate
+venv\Scripts\activate
 
 # Linux/Mac
-source .venv/bin/activate
+source venv/bin/activate
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Install dependencies (includes PyTorch ~2GB first time)
+pip install -r requirements.txt
 
-   # Copy environment template
-   cp .env.example .env
-
-   # Edit .env and add your Gemini API key
-   GEMINI_API_KEY=your_api_key_here
-
-
-4. **Setup environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env file with your API keys
-   ```
-
-5. **Run the application**
-   ```bash
-   python agentic_ai_refactored.py
-   ```
-
-6. **Project Structure**
-
-[maintenance.agentic.ai](http://_vscodecontentref_/0)
-├── [agentic_ai_refactored.py](http://_vscodecontentref_/1)    
-├── maintenance.db              # SQLite database (equipment & history)
-├── [requirements.txt](http://_vscodecontentref_/2)            
-├── .env                        # Environment variables (API keys)
-├── .env.example               # Environment template
-├── .gitignore                 # Git ignore rules
-├── [README.md](http://_vscodecontentref_/3)                 
-├── pump_images/               # Sample equipment images
-├── uploads/                   # User document uploads
-└── visual_uploads/            # User image uploads
+# Configure
+cp .env.example .env
+# Edit .env and set your GEMINI_API_KEY
 ```
 
-## 💡 Usage Examples
+### Run
 
-### Basic Maintenance Query
-```python
-# Run the main application
-streamlit run agentic_ai_refactored.py
+```bash
+# Start the Streamlit web app
+streamlit run streamlit_app.py
 
-# In the web interface:
-# 1. Enter: "My pump is making unusual noise"
-# 2. Upload equipment image (optional)
-# 3. Get AI-powered diagnostics and solutions
+# Or run the legacy CLI interface
+python agentic_ai_refactored.py
 ```
 
-### Document Analysis
-```python
-# Upload maintenance manual or report
-# System will:
-# 1. Parse the document
-# 2. Extract relevant maintenance procedures
-# 3. Provide contextualized recommendations
+---
+
+## 📁 Project Structure
+
+```
+maintenance.agentic.ai/
+├── streamlit_app.py            # Main Streamlit chat interface
+├── agentic_ai_refactored.py    # Legacy CLI interface
+├── app/                        # Core application package
+│   ├── config.py               # Centralized configuration
+│   ├── models.py               # Data models (dataclasses)
+│   ├── llm_provider.py         # Gemini API with retry logic
+│   ├── knowledge_base.py       # SQLite storage (equipment, history, conversations)
+│   ├── vector_store.py         # ChromaDB + sentence-transformers
+│   ├── document_loader.py      # PDF/DOCX/TXT ingestion pipeline
+│   ├── rag_chain.py            # Retrieval-Augmented Generation chain
+│   ├── memory.py               # Conversation memory + entity tracking
+│   ├── sensor_processor.py     # Sensor anomaly detection
+│   ├── vision_processor.py     # OpenCV + Gemini multimodal vision
+│   ├── diagnostic_engine.py    # AI fault diagnosis
+│   └── maintenance_planner.py  # AI maintenance scheduling
+├── pages/                      # Streamlit sub-pages
+│   ├── sensor_analysis.py      # Sensor data input & analysis
+│   ├── equipment_manager.py    # Equipment CRUD
+│   └── document_manager.py     # Document upload & search testing
+├── data/
+│   ├── sample_docs/            # Pre-loaded maintenance documents
+│   ├── chroma_db/              # Vector store (auto-generated)
+│   └── maintenance.db          # SQLite database (auto-generated)
+├── .streamlit/config.toml      # Dark theme configuration
+├── requirements.txt
+├── .env.example
+└── README.md
 ```
 
-### Visual Equipment Inspection
-```python
-# Upload equipment images
-# AI will:
-# 1. Analyze visual defects
-# 2. Identify potential issues
-# 3. Recommend maintenance actions
-```
+---
 
-## 🎯 Use Cases
+## 💡 Usage
 
-- **🏭 Manufacturing Plants**: Equipment monitoring and predictive maintenance
-- **🔌 Power Plants**: Critical infrastructure maintenance planning
-- **🚗 Automotive**: Vehicle maintenance diagnostics
-- **✈️ Aviation**: Aircraft maintenance compliance
-- **🏥 Healthcare**: Medical equipment servicing
-- **🏢 Facilities Management**: Building systems maintenance
+### Chat with the AI
+Ask any maintenance question. The RAG pipeline searches your knowledge base and provides grounded answers with source citations.
 
-## 🛠️ API Integration
+### Upload Documents
+Drag & drop PDFs, DOCX, or TXT files in the sidebar or Document Manager page. Documents are automatically chunked, embedded, and indexed for semantic search.
 
-The system supports multiple AI providers:
+### Sensor Analysis
+Enter real-time sensor readings (temperature, vibration, pressure, humidity, sound) and get AI-powered anomaly detection and fault diagnosis.
 
-- **Google Gemini Pro**: Advanced reasoning and analysis
-- **Groq**: Fast inference for real-time responses
-- **HuggingFace**: Open-source model ecosystem
-- **LLaMA**: Meta's large language models
-- **Custom Models**: Extensible architecture for new providers
+### Equipment Management
+Register your equipment inventory. The AI provides type-specific maintenance recommendations on registration.
 
-## 📊 Performance
+---
 
-- **Response Time**: < 3 seconds for text queries
-- **Image Analysis**: < 5 seconds for visual diagnostics
-- **Document Processing**: Depends on file size
-- **Concurrent Users**: Supports multiple simultaneous sessions
+## 🛠️ Tech Stack
 
-## 🔒 Security & Privacy
+| Component | Technology |
+|-----------|-----------|
+| **LLM** | Google Gemini 1.5 Flash |
+| **Embeddings** | sentence-transformers (`all-MiniLM-L6-v2`) |
+| **Vector Store** | ChromaDB (local, persistent) |
+| **Database** | SQLite |
+| **Web UI** | Streamlit |
+| **Vision** | OpenCV + Gemini Multimodal |
+| **Document Parsing** | PyPDF2, python-docx |
 
-- **API Key Protection**: Environment variable storage
-- **Data Privacy**: No persistent storage of sensitive data
-- **Secure Communication**: HTTPS for all external API calls
-- **Input Validation**: Comprehensive input sanitization
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Support
-
-- **Contact**: abhishekkumawat001@gmail.com
-
-## 🙏 Acknowledgments
-
-- Google AI for Gemini Pro API
-- Groq for fast inference capabilities
-- HuggingFace for open-source model ecosystem
-- Streamlit for the amazing web framework
-- The open-source community for inspiration and tools
+MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
